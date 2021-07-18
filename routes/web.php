@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\PartController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,4 +27,11 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/', [Controller::class, 'home']);
+
+Route::resource('/users', UserController::class);
+
 Route::resource('/parts', PartController::class);
+
+Route::resource('/cars', CarController::class);
+

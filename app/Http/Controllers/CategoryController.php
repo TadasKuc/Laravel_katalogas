@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Car;
 use App\Models\Category;
-use App\Models\Part;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class PartController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +14,17 @@ class PartController extends Controller
      */
     public function index()
     {
-        $parts = Part::all();
-
-       return view('part.part-index' , ['parts' => $parts]);
+        //
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('part.part-create', [
-            'cars' => CAR::all(),
-            'categories' => Category::all(),
-        ]);
+        //
     }
 
     /**
@@ -39,25 +35,16 @@ class PartController extends Controller
      */
     public function store(Request $request)
     {
-        $part = new Part();
-        $part->user_id       = Auth::user()->id;
-        $part->car_id        = $request->get('car_id');
-        $part->category_id   = $request->get('category_id');
-        $part->title         = $request->get('title');
-        $part->description   = $request->get('description');
-        $part->price         = $request->get('price');
-
-        $part->save();
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Part  $part
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Part $part)
+    public function show(Category $category)
     {
         //
     }
@@ -65,10 +52,10 @@ class PartController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Part  $part
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Part $part)
+    public function edit(Category $category)
     {
         //
     }
@@ -77,10 +64,10 @@ class PartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Part  $part
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Part $part)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -88,12 +75,11 @@ class PartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Part  $part
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Part $part)
+    public function destroy(Category $category)
     {
         //
     }
-
 }

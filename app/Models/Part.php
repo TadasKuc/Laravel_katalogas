@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Part extends Model
 {
     use HasFactory;
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
 }
