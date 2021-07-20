@@ -24,9 +24,7 @@
                 <td>{{$user->approved}} </td>
                 <td><a href="{{ route('users.edit', $user) }}" style="color:blue">-Edit-</a> </td>
                 <td><a href="{{ route('users.destroy', $user) }}" style="color:red">-X-</a> </td>
-                @foreach($user->address as $address)
-                    {{ $address->city }}
-                @endforeach
+{{$user->address->city}}
             </tr>
 
             @endforeach
