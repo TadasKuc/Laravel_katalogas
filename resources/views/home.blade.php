@@ -40,22 +40,29 @@
 
 
         <div class="card" style="width: 18rem; margin: 5px;">
-            <img class="card-img-top" src="https://source.unsplash.com/featured/?{car-parts},{{{$part->title}}}" alt="Card image cap" style="width: 18rem; height: 15rem;">
-            <div class="card-body">
+            @foreach($part->image as $img)
+                <img class="card-img-top"
+                     src="{{asset('storage/image/'.$img->path) }}"
+                     alt="Card image cap"
+                     style="width: 18rem; height: 15rem;">
+
+            @endforeach
+        <div class="card-body">
                 <h5 class="card-title">{{$part->title}}</h5>
                 <p class="card-text">{{$part->description}}</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">{{$part->car->model}}</li>
                 <li class="list-group-item">{{$part->category->name}}</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">{{$part->mainCategory($part->category->category_id)}}</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
+                <a href="{{route('parts.show', ['part' => $part])}}" class="card-link">Apziureti detale</a>
                 <a href="#" class="card-link">Another link</a>
             </div>
         </div>
     @endforeach
+
 </div>
 </body>
 </html>

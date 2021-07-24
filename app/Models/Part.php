@@ -19,4 +19,20 @@ class Part extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function image()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function mainCategory($id)
+    {
+
+        return Category::where('id', $id)->value('name');
+    }
+
 }

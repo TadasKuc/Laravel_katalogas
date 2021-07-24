@@ -1,4 +1,44 @@
-@foreach($parts as $part)
-    {{ $part->title }}
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 
-@endforeach
+    <table class="table" style="margin: 0 20px;">
+        <tr>
+            <th>Gamintojas</th>
+            <th>Modelis</th>
+            <th>PAgaminimo metai</th>
+            <th>Variklio tūris</th>
+
+            <th>Edit</th>
+            <th>X</th>
+
+        </tr>
+
+        @foreach($parts as $part)
+            <tr class="">
+                <td><a href="">{{$part->title}} </a></td>
+                <td>{{$part->description}}</td>
+                <td>{{$part->category->name}} </td>
+                <td>{{$part->mainCategory($part->category->category_id)}} </td>
+
+                <td><a href="{{ route('parts.edit', $part->id) }}" style="color:blue">Edit-</a> </td>
+                <td>
+                    <form action="{{ route('parts.destroy' , ['part' => $part->id]) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <input type="Submit" value="X">
+                    </form>
+
+                    {{--                    <a href="{{ route('cars.destroy', $car->id) }}" style="color:red">X</a> --}}
+                </td>
+            </tr>
+
+        @endforeach
+
+        <h1><a href="{{route('dashboard')}}">Grižti į administratoriaus puslapį</a></h1>
+
+</x-app-layout>
+

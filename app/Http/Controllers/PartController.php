@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Part;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,6 +41,7 @@ class PartController extends Controller
      */
     public function store(Request $request)
     {
+
         $part = new Part();
         $part->user_id       = Auth::user()->id;
         $part->car_id        = $request->get('car_id');
@@ -46,8 +49,13 @@ class PartController extends Controller
         $part->title         = $request->get('title');
         $part->description   = $request->get('description');
         $part->price         = $request->get('price');
-
         $part->save();
+
+        $image = new Image();
+        $image->part_id = $part->id;
+        $image->path = $this->savePhoto($request);
+        $image->save();
+
 
     }
 
@@ -59,7 +67,7 @@ class PartController extends Controller
      */
     public function show(Part $part)
     {
-        //
+        return view('part.part-show', ['part' => $part]);
     }
 
     /**
@@ -70,7 +78,7 @@ class PartController extends Controller
      */
     public function edit(Part $part)
     {
-        //
+//        return view('part.part-edit');
     }
 
     /**
@@ -93,7 +101,32 @@ class PartController extends Controller
      */
     public function destroy(Part $part)
     {
-        //
+        $part->delete();
+
+        return redirect(route('parts.index'));
+    }
+
+    public function savePhoto($request) {
+
+
+        if($request->hasFile('image')) {
+
+            // get file name with extension
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            $extension = $request->file('image')->getClientOriginalExtension();
+
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+
+            $request->file('image')->storeAs('image', $fileNameToStore);
+
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        return $fileNameToStore;
     }
 
 }

@@ -1,3 +1,5 @@
+
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -34,16 +36,36 @@
                     @endforeach
                 </select>
             </div>
+
             <div class="form-group col-md-4">
                 <label for="inputEmail4">Kategorija</label>
-                <select id="categories_id" class="form-control" name="category_id">
-                    <option selected>Pasirinkti...</option>
+                <select name="category_id">
+                    <option selected="selected">Pasirinkti kategorija...</option>
                     @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name . '-' . $category->description}}</option>
+                        @if($category->category_id === 0)
+                            <optgroup value="{{$category->id}}" label="{{$category->name}}" name="category_id">
+                                @endif
+                                @foreach($categories as $subCategory)
+                                    @if($subCategory->category_id === $category->id)
+                                        <option value="{{$subCategory->id}}" name="category_id">{{$subCategory->name}}</option>
+                        @endif
+                    @endforeach
                     @endforeach
                 </select>
             </div>
-        </div>
+
+           </div>
+        <label for="image">
+            <span>Photo  <span class="required">*</span></span>
+            <input
+                class="input-field"
+                type="file"
+                name="image"
+                id="image"
+                value="{{old('image')}}">
+        </label>
         <button type="submit" class="btn btn-primary">Kurti</button>
     </form>
-</x-app-layout>
+
+ </x-app-layout>
+

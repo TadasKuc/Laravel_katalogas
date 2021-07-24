@@ -11,6 +11,9 @@
             <th>email</th>
             <th>role</th>
             <th>approved</th>
+            <th>Miestas</th>
+            <th>Tel nr</th>
+
             <th>EDIT</th>
             <th>X</th>
 
@@ -22,9 +25,11 @@
                 <td>{{$user->email}} </td>
                 <td>{{$user->role}} </td>
                 <td>{{$user->approved}} </td>
+                <td>{{$user->address->city}} </td>
+                <td>{{$user->phone}} </td>
                 <td><a href="{{ route('users.edit', $user) }}" style="color:blue">-Edit-</a> </td>
                 <td><a href="{{ route('users.destroy', $user) }}" style="color:red">-X-</a> </td>
-{{$user->address->city}}
+
             </tr>
 
             @endforeach

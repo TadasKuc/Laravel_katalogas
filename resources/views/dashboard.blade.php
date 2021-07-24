@@ -9,6 +9,7 @@
         <li><a href="{{route('cars.create')}}">Pridėti automobilį</a></li>
         <li><a href="{{route('cars.index')}}">Automobilių sąrašas</a></li>
         <li><a href="{{ route('parts.create') }}">Pridėti dalį</a></li>
+        <li><a href="{{ route('parts.index') }}">Daliu sarasas</a></li>
         <li><a href="{{route('parts.index')}}">Visos dalys</a></li>
         <li><a href="#">Peržiūrėti automobilius</a></li>
     </ul>

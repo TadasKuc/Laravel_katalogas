@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDefaultValueToUsersRole extends Migration
+class AddMainCategoryIDColumnToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +13,8 @@ class AddDefaultValueToUsersRole extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-                $table->enum('role', User::ROLE)->default(User::ROLE_SIMPLE);
+        Schema::table('categories', function (Blueprint $table) {
+            $table->integer('category_id');
         });
     }
 
@@ -26,6 +25,8 @@ class AddDefaultValueToUsersRole extends Migration
      */
     public function down()
     {
-
+        Schema::table('categories', function (Blueprint $table) {
+            //
+        });
     }
 }

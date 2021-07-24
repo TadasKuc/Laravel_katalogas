@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDefaultValueToUsersRole extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +13,11 @@ class AddDefaultValueToUsersRole extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-                $table->enum('role', User::ROLE)->default(User::ROLE_SIMPLE);
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->integer('part_id')->nullable(false);
+            $table->string('path')->nullable(false);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class AddDefaultValueToUsersRole extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('images');
     }
 }
