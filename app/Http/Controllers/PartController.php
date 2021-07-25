@@ -67,7 +67,11 @@ class PartController extends Controller
      */
     public function show(Part $part)
     {
-        return view('part.part-show', ['part' => $part]);
+
+        return view('part.part-show', [
+            'part' => $part,
+            'partsByCar' => $this->partByCar($part->car_id),
+        ]);
     }
 
     /**
@@ -78,7 +82,12 @@ class PartController extends Controller
      */
     public function edit(Part $part)
     {
-//        return view('part.part-edit');
+
+        return view('part.part-edit', [
+            'part' =>$part,
+            'cars' => Car::all(),
+            'categories' => Category::all()
+            ]);
     }
 
     /**
@@ -90,7 +99,16 @@ class PartController extends Controller
      */
     public function update(Request $request, Part $part)
     {
-        //
+
+        $part->car_id        = $request->get('car_id');
+        $part->category_id   = $request->get('category_id');
+        $part->title         = $request->get('title');
+        $part->description   = $request->get('description');
+        $part->price         = $request->get('price');
+        $part->save();
+
+
+
     }
 
     /**
@@ -127,6 +145,14 @@ class PartController extends Controller
         }
 
         return $fileNameToStore;
+    }
+
+    public function partByCar($carId)
+    {
+        return Part::query()
+            ->where('car_id', $carId)
+            ->get();
+
     }
 
 }

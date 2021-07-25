@@ -31,7 +31,6 @@ class Part extends Model
 
     public function mainCategory($id)
     {
-
         return Category::where('id', $id)->value('name');
     }
 

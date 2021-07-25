@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AddressController extends Controller
 {
@@ -23,7 +25,8 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.address-create');
+
     }
 
     /**
@@ -34,7 +37,17 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $address = new Address();
+        $address->user_id   = Auth::user()->id;
+        $address->country   = $request->get('country', '*');
+        $address->city      = $request->get('city', '*');
+        $address->post_code = $request->get('post_code', '*');
+        $address->street    = $request->get('street', '*');
+        $address->house     = $request->get('house', '*');
+        $address->flat      = $request->get('flat', '*');
+
+        $address->save();
+
     }
 
     /**
