@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PartController;
 use App\Http\Controllers\UserController;
@@ -37,4 +38,8 @@ Route::resource('/parts', PartController::class);
 Route::resource('/cars', CarController::class);
 
 Route::resource('/address', AddressController::class);
+
+Route::resource('/categories', CategoryController::class);
+
+
 

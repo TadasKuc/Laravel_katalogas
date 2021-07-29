@@ -15,6 +15,7 @@
         <li><a href="{{ route('parts.index') }}">Daliu sarasas</a></li>
         <li><a href="{{route('parts.index')}}">Visos dalys</a></li>
         <li><a href="{{route('address.create')}}">Prideti adresa</a></li>
+        <li><a href="{{route('categories.create')}}">Prideti kategorija</a></li>
         <li><a href="#">Peržiūrėti automobilius</a></li>
     </ul>
 

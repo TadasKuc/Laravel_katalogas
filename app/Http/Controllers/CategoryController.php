@@ -24,7 +24,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.category-create', [
+            'categories' => Category::all(),
+        ]);
+
     }
 
     /**
@@ -35,7 +38,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $category = new Category();
+
+        $category->name        = $request->get('name');
+        $category->description = $request->get('description');
+        $category->category_id = $request->get('category_id');
+
+        $category->save();
+
+        return redirect('dashboard');
     }
 
     /**
