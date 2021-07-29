@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
             'phone' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-var_dump($request->phone);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
