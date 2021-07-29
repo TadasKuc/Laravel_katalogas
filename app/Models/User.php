@@ -11,16 +11,28 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $guarded = [];
+
     public const ROLE_SUPER_ADMIN = "Super Admin";
     public const ROLE_ADMIN = "Admin";
     public const ROLE_SIMPLE = "Simple";
-    public const ROLE_COMPANY= "Company";
+    public const ROLE_COMPANY = "Company";
+    public const ROLE_NEW = "New";
+
+    public const CONFIRMED_YES = "Patvirtintas";
+    public const CONFIRMED_NO = "Nepatvirtintas";
 
     public const ROLE = [
         self::ROLE_SUPER_ADMIN,
         self::ROLE_ADMIN,
         self::ROLE_SIMPLE,
-        self::ROLE_COMPANY
+        self::ROLE_COMPANY,
+        self::ROLE_NEW
+    ];
+
+    public const CONFIRMED = [
+        self::CONFIRMED_NO,
+        self::CONFIRMED_YES,
     ];
 
     /**

@@ -60,19 +60,34 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = User::ROLE;
+        $status = User::CONFIRMED;
+        return view('users.edit', [
+            'user' => $user,
+            'roles' => $roles,
+            'status' => $status
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+
+
+
+      $user->name         = $request->get('name');
+      $user->email         = $request->get('email');
+      $user->role         = $request->get('role');
+      $user->approved         = $request->get('approved');
+        $user->save();
+        return redirect(route('users.index'));
     }
 
     /**

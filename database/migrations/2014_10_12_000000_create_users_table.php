@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('role', User::ROLE);
-            $table->boolean('approved')->default(false);
+            $table->enum('role', User::ROLE)->default(User::ROLE_NEW);
+            $table->enum('approved', User::CONFIRMED)->default(User::CONFIRMED_NO);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
