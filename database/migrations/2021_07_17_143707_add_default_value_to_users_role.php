@@ -15,7 +15,10 @@ class AddDefaultValueToUsersRole extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-                $table->enum('role', User::ROLE)->default(User::ROLE_SIMPLE);
+            $table->dropColumn('role');
+        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('role', User::ROLE)->default(User::ROLE_SIMPLE);
         });
     }
 
