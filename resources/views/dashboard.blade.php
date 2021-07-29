@@ -7,7 +7,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <ul>
+    <ul>vgnvn
         <li class="bg-danger"><a href="{{route('users.index')}}">Vartotojų peržiūra</a></li>
         <li><a href="{{route('cars.create')}}">Pridėti automobilį</a></li>
         <li><a href="{{route('cars.index')}}">Automobilių sąrašas</a></li>
