@@ -56,6 +56,7 @@ class PartController extends Controller
         $image->path = $this->savePhoto($request);
         $image->save();
 
+        return redirect(route('parts.index'));
 
     }
 

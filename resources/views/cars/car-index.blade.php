@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    <table class="table" style="margin: 0 20px;">
+    <table class="table" style="margin: 10px;">
         <tr>
             <th>Gamintojas</th>
             <th>Modelis</th>
-            <th>PAgaminimo metai</th>
+            <th>Pagaminimo metai</th>
             <th>Variklio tūris</th>
             <th>Galia kw</th>
             <th>Spalva</th>
@@ -43,7 +43,7 @@
             </tr>
 
         @endforeach
-
+        </table>
         <h1><a href="{{route('dashboard')}}">Grižti į administratoriaus puslapį</a></h1>
 
 </x-app-layout>

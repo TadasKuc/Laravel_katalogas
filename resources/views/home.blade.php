@@ -15,7 +15,7 @@
                     <div class="col-md-4">
                         <div class="product-item">
                             @foreach($part->image as $img)
-                                <img class="card-img-top" style="max-height: 200px;" src="storage/app/public/image/generat_1627559376.jpg" alt="Card image cap">
+                                <img class="card-img-top" style="max-height: 200px;" src="{{asset('storage/image/'.$img->path) }}" alt="Card image cap">
                             @endforeach
                             <div class="down-content">
                                 <a href="{{route('parts.show', ['part' => $part])}}"><h4>{{$part->title}}</h4></a>

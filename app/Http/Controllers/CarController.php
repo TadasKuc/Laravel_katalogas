@@ -48,6 +48,7 @@ class CarController extends Controller
 
         $car->save();
 
+        return redirect(route('cars.index'));
 
     }
 
