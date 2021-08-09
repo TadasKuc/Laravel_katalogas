@@ -43,6 +43,7 @@ Route::resource('/address', AddressController::class);
 
 Route::resource('/categories', CategoryController::class);
 
+//Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'admin'])->name('dashboard');
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 

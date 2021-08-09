@@ -71,10 +71,10 @@ class User extends Authenticatable
         return $this->hasOne(Address::class);
     }
 
-    public function isAdmin()
+    public function isSuperAdmin()
     {
-        var_dump($this->role);
-        if($this->role === self::ROLE_ADMIN)
+
+        if($this->role === self::ROLE_SUPER_ADMIN)
         {
             return true;
         }
