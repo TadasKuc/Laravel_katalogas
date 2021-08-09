@@ -71,4 +71,18 @@ class User extends Authenticatable
         return $this->hasOne(Address::class);
     }
 
+    public function isAdmin()
+    {
+        var_dump($this->role);
+        if($this->role === self::ROLE_ADMIN)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
 }

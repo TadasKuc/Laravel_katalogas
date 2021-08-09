@@ -108,7 +108,7 @@ class PartController extends Controller
         $part->price         = $request->get('price');
         $part->save();
 
-
+        return redirect(route('parts.index'));
 
     }
 
@@ -126,7 +126,6 @@ class PartController extends Controller
     }
 
     public function savePhoto($request) {
-
 
         if($request->hasFile('image')) {
 

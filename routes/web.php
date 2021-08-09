@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
@@ -23,9 +24,9 @@ Route::get('/', function () {
     return view('home')->name('main');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -36,10 +37,13 @@ Route::resource('/users', UserController::class);
 Route::resource('/parts', PartController::class);
 
 Route::resource('/cars', CarController::class);
+//Route::resource('/cars', CarController::class)->middleware('admin');
 
 Route::resource('/address', AddressController::class);
 
 Route::resource('/categories', CategoryController::class);
+
+Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 
 

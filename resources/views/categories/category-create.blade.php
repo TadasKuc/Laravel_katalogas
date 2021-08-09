@@ -7,12 +7,13 @@
     <div class="send-message">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="section-heading">
-                        <h2>Send us a Message</h2>
+                @include('layouts.admin')
+                <div class="col-md-10">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h2>Kategorijos kūrimas</h2>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-8">
                     <div class="contact-form">
                         <form id="contact" action="{{route('categories.store')}}" method="post">
                             @csrf
@@ -47,34 +48,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <ul class="accordion">
-                        <li>
-                            <a>Accordion Title One</a>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a>Second Title Here</a>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a>Accordion Title Three</a>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a>Fourth Accordion Title</a>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
