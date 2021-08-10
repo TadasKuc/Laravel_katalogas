@@ -19,38 +19,77 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                    @error('manufacturer')
+                                    <p class="" style="color:red">{{ $errors->first('manufacturer') }}</p>
+                                    @enderror
                                     <fieldset>
-                                        <input name="manufacturer" type="text" class="form-control" id="manufacturer" placeholder="Gamintojas" required="">
+                                        <input name="manufacturer"
+                                               type="text"
+                                               class="form-control"
+                                               id="manufacturer"
+                                               placeholder="Gamintojas"
+                                               required=""
+                                               value="{{old('manufacturer')}}">
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                    @error('model')
+                                    <p class="" style="color:red">{{ $errors->first('model') }}</p>
+                                    @enderror
                                     <fieldset>
-                                        <input name="model" type="text" class="form-control" id="model" placeholder="Automobilio modelis" required="">
+                                        <input name="model"
+                                               type="text"
+                                               class="form-control"
+                                               id="model"
+                                               placeholder="Automobilio modelis"
+                                               required=""
+                                               value="{{old('model')}}">
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                    @error('year_manufacture')
+                                    <p class="" style="color:red">{{ $errors->first('year_manufacture') }}</p>
+                                    @enderror
                                     <fieldset>
-                                        <input name="year_manufacture" type="date" class="form-control" id="year_manufacture" placeholder="Pagaminimo data" required="">
+                                        <input name="year_manufacture"
+                                               type="date"
+                                               class="form-control"
+                                               id="year_manufacture"
+                                               placeholder="Pagaminimo data"
+                                               required=""
+                                               value="{{old('year_manufacture')}}">
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                                    @error('engine_cc')
+                                    <p class="" style="color:red">{{ $errors->first('engine_cc') }}</p>
+                                    @enderror
                                     <fieldset>
-                                    <label for="inputPassword4">Variklio tūris</label>
+                                    <label>Variklio tūris</label>
                                     <select name="engine_cc" class="form-control" id="engine_cc" placeholder="Variklio tūris" required="">
-                                        <option selected>Pasirinkti...</option>
-                                        @for($i = 0; $i < 8; $i = $i + 0.1)
-                                            <option>{{ $i }}</option>
+                                        <option value="">Pasirinkti...</option>
+                                        @for($i = 0; $i < 8000; $i = $i + 100)
+                                            <option value="{{ $i }}" >{{ $i }}</option>
                                         @endfor
                                     </select>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                    @error('power_kw')
+                                    <p class="" style="color:red">{{ $errors->first('power_kw') }}</p>
+                                    @enderror
                                     <fieldset>
-                                        <input name="power_kw" type="number" class="form-control" id="year_manufacture" placeholder="Galia kw" required="">
+                                        <input name="power_kw"
+                                               type="number"
+                                               class="form-control"
+                                               id="year_manufacture"
+                                               placeholder="Galia kw"
+                                               required=""
+                                               value="{{old('power_kw')}}">
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <label for="inputPassword4">Pavarų dėžės tipas</label>
+                                <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <label>Pavarų dėžės tipas</label>
                                     <select name="gearbox" class="form-control" id="gearbox"  required="">
                                         <option selected>Pasirinkti...</option>
                                          <option value="Automatic">Mechanine</option>
@@ -58,7 +97,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
-                                    <label for="inputPassword4">Kuro tipas</label>
+                                    <label for="fuel_type">Kuro tipas</label>
                                     <select name="fuel_type" class="form-control" id="fuel_type"  required="">
 
                                         <option selected>Pasirinkti...</option>
@@ -80,34 +119,6 @@
                         </form>
                     </div>
                 </div>
-{{--                <div class="col-md-4">--}}
-{{--                    <ul class="accordion">--}}
-{{--                        <li>--}}
-{{--                            <a>Accordion Title One</a>--}}
-{{--                            <div class="content">--}}
-{{--                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a>Second Title Here</a>--}}
-{{--                            <div class="content">--}}
-{{--                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a>Accordion Title Three</a>--}}
-{{--                            <div class="content">--}}
-{{--                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a>Fourth Accordion Title</a>--}}
-{{--                            <div class="content">--}}
-{{--                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>

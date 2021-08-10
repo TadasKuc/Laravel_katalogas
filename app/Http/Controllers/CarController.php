@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Managers\CarManager;
 use App\Models\Car;
+use App\Models\Part;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
+    /**
+     * CarController constructor.
+     */
+    public function __construct(private CarManager $carManager)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +23,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        $carsList = Car::all();
-        return view('cars.car-index', ['carsList' => $carsList]);
+
+        return view('cars.car-index', ['carsList' => Car::all()]);
     }
 
     /**
@@ -36,31 +45,10 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $car = new Car();
-        $car->manufacturer     = $request->get('manufacturer');
-        $car->model            = $request->get('model');
-        $car->year_manufacture = $request->get('year_manufacture');
-        $car->engine_cc        = 1000 * ($request->get('engine_cc'));
-        $car->power_kw         = $request->get('power_kw');
-        $car->color            = $request->get('color');
-        $car->fuel_type        = $request->get('fuel_type');
-        $car->gearbox          = $request->get('gearbox');
-
-        $car->save();
+        $this->carManager->store($request);
 
         return redirect(route('cars.index'));
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Car  $car
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Car $car)
-    {
-        //
     }
 
     /**
@@ -83,7 +71,7 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        $car->update($request->toArray());
+        $this->carManager->update($request, $car);
 
         return redirect(route('cars.index'));
 
@@ -97,8 +85,11 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        $car->delete();
+        $this->carManager->destroy($car);
 
         return redirect(route('cars.index'));
+
     }
+
+
 }
