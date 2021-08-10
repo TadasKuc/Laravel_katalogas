@@ -128,4 +128,33 @@ class PartController extends Controller
 
     }
 
+    public function exportToCsv()
+    {
+
+        $name = 'parts.csv';
+        $headers = ['Content-Disposition' => 'attachment; filename='. $name,];
+        $columns = \Illuminate\Support\Facades\Schema::getColumnListing("parts");
+        array_shift($columns);
+        $data = Part::all();
+
+        $callback = function() use($data, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($data as $value) {
+                $data = $value->toArray();
+
+                unset($data['id']);
+
+                fputcsv($file, $data);
+            }
+
+            fclose($file);
+
+        };
+
+        return response()->stream($callback, 200,  $headers );
+
+    }
+
 }

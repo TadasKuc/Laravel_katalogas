@@ -14,6 +14,7 @@
                         <div class="section-heading">
                             <h2>Dalių sąrašas</h2>
                         </div>
+                        <a href="{{route('part.exportToCsv')}}" class="btn btn-info">Exportuoti dalis į csv failą</a>
                     </div>
                     <table class="table m-5" style="width: 80%">
                         <tr>

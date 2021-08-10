@@ -27,7 +27,7 @@ class CarManager
 
     }
 
-    public function update(\Illuminate\Http\Request $request, \App\Models\Car $car)
+    public function update($request, $car)
     {
 
         $this->validator->validateCarRequest($request);

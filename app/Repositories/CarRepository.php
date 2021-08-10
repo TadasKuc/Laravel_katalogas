@@ -25,7 +25,7 @@ class CarRepository
         $car->save();
     }
 
-    public function update(Request $request, Car $car)
+    public function update($request, $car)
     {
         $car->update($request->toArray());
     }

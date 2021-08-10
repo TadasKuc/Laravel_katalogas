@@ -44,7 +44,7 @@
                             @endforeach
                         </div>
                         <div class="down-content">
-                            <h4>{{$partcar->title}}</h4>
+                            <a href="{{route('parts.show', ['part' => $partcar])}}"><h4>{{$partcar->title}}</h4></a>
                             <span>{{$partcar->car->manufacturer}} - {{$partcar->car->model}}</span>
                             <p>{{$partcar->category->name}} * {{$partcar->mainCategory($partcar->category->category_id)}}</p>
                         </div>
@@ -52,50 +52,6 @@
                 </div>
                 @endforeach
 
-            </div>
-        </div>
-    </div>
-
-
-    <div class="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="service-item">
-                        <div class="icon">
-                            <i class="fa fa-gear"></i>
-                        </div>
-                        <div class="down-content">
-                            <h4>Product Management</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                            <a href="#" class="filled-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-item">
-                        <div class="icon">
-                            <i class="fa fa-gear"></i>
-                        </div>
-                        <div class="down-content">
-                            <h4>Customer Relations</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                            <a href="#" class="filled-button">Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-item">
-                        <div class="icon">
-                            <i class="fa fa-gear"></i>
-                        </div>
-                        <div class="down-content">
-                            <h4>Global Collection</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                            <a href="#" class="filled-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

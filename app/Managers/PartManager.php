@@ -4,6 +4,7 @@
 namespace App\Managers;
 
 
+use App\Models\Part;
 use App\Repositories\PartRepository;
 
 class PartManager
@@ -36,4 +37,5 @@ class PartManager
     {
         $this->repository->desttroy($part);
     }
+
 }

@@ -66,7 +66,7 @@
                                     @enderror
                                     <fieldset>
                                     <label>Variklio tūris</label>
-                                    <select name="engine_cc" class="form-control" id="engine_cc" placeholder="Variklio tūris" required="">
+                                    <select name="engine_cc" class="form-control"  placeholder="Variklio tūris" required="">
                                         <option value="">Pasirinkti...</option>
                                         @for($i = 0; $i < 8000; $i = $i + 100)
                                             <option value="{{ $i }}" >{{ $i }}</option>
@@ -92,16 +92,18 @@
                                     <label>Pavarų dėžės tipas</label>
                                     <select name="gearbox" class="form-control" id="gearbox"  required="">
                                         <option selected>Pasirinkti...</option>
-                                         <option value="Automatic">Mechanine</option>
-                                         <option value="Mechanical">Automatine</option>
+                                         <option value="{{\App\Models\Car::MECHANICAL}}">Mechanine</option>
+                                         <option value="{{\App\Models\Car::AUTOMATIC}}">Automatine</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                                     <label for="fuel_type">Kuro tipas</label>
                                     <select name="fuel_type" class="form-control" id="fuel_type"  required="">
-
                                         <option selected>Pasirinkti...</option>
-                                        <option value="Diesel">Dyzelinas</option>
+                                        <option value="{{\App\Models\Car::DIESEL}}">Dyzelinas</option>
+                                        <option value="{{\App\Models\Car::GASOLINE}}">Benzinas</option>
+                                        <option value="{{\App\Models\Car::PETROL_GAS}}">Benzinas/Dujos</option>
+                                        <option value="{{\App\Models\Car::ELECTRICITY}}">Elektra</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">

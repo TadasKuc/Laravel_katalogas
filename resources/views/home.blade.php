@@ -19,10 +19,10 @@
                                 <a href="{{route('parts.show', ['part' => $part])}}"><h4>{{$part->title}}</h4></a>
                                 <h6>{{$part->price}} Eur</h6>
                                 <p>{{$part->description}}</p>
-
                                 <span>{{$part->car->manufacturer}} - {{$part->car->model}} - </span>
                             </div>
                         </div>
+
                     </div>
                 @endforeach
 
@@ -45,6 +45,5 @@
     </div>
 
 </x-app-layout>
-{{--@endsection--}}
 
 

@@ -85,4 +85,22 @@ class User extends Authenticatable
 
     }
 
+    public function isCompany()
+    {
+        if($this->role === self::ROLE_COMPANY)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function company()
+    {
+
+        return $this->hasOne(Company::class);
+    }
+
 }

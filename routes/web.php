@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PartController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -35,13 +36,17 @@ Route::get('/', [Controller::class, 'home']);
 Route::resource('/users', UserController::class);
 
 Route::resource('/parts', PartController::class);
+Route::get('/parts-export', [PartController::class, 'exportToCsv'])->name('part.exportToCsv');
+
 
 Route::resource('/cars', CarController::class);
-//Route::resource('/cars', CarController::class)->middleware('admin');
 
 Route::resource('/address', AddressController::class);
 
 Route::resource('/categories', CategoryController::class);
+
+Route::resource('/order', OrderController::class);
+Route::get('/order/{part}/add', [OrderController::class, 'add'])->name('order.add');
 
 //Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'admin'])->name('dashboard');
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
