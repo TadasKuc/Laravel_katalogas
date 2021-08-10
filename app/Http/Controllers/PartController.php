@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Managers\PartManager;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Image;
@@ -13,22 +14,28 @@ use Illuminate\Support\Facades\Auth;
 class PartController extends Controller
 {
     /**
+     * PartController constructor.
+     */
+    public function __construct(private PartManager $partManager)
+    {
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $parts = Part::all();
 
-       return view('part.part-index' , ['parts' => $parts]);
+       return view('part.part-index' , ['parts' => Part::all()]);
     }
 
 
     public function create()
     {
         return view('part.part-create', [
-            'cars' => CAR::all(),
+            'cars'       => CAR::all(),
             'categories' => Category::all(),
         ]);
     }
@@ -42,19 +49,7 @@ class PartController extends Controller
     public function store(Request $request)
     {
 
-        $part = new Part();
-        $part->user_id       = Auth::user()->id;
-        $part->car_id        = $request->get('car_id');
-        $part->category_id   = $request->get('category_id');
-        $part->title         = $request->get('title');
-        $part->description   = $request->get('description');
-        $part->price         = $request->get('price');
-        $part->save();
-
-        $image = new Image();
-        $image->part_id = $part->id;
-        $image->path = $this->savePhoto($request);
-        $image->save();
+        $this->partManager->store($request);
 
         return redirect(route('parts.index'));
 
@@ -100,13 +95,7 @@ class PartController extends Controller
      */
     public function update(Request $request, Part $part)
     {
-
-        $part->car_id        = $request->get('car_id');
-        $part->category_id   = $request->get('category_id');
-        $part->title         = $request->get('title');
-        $part->description   = $request->get('description');
-        $part->price         = $request->get('price');
-        $part->save();
+        $this->partManager->update($request, $part);
 
         return redirect(route('parts.index'));
 
@@ -120,32 +109,12 @@ class PartController extends Controller
      */
     public function destroy(Part $part)
     {
-        $part->delete();
+
+        $this->partManager->destroy($part);
 
         return redirect(route('parts.index'));
     }
 
-    public function savePhoto($request) {
-
-        if($request->hasFile('image')) {
-
-            // get file name with extension
-            $fileNameWithExt = $request->file('image')->getClientOriginalName();
-
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-
-            $extension = $request->file('image')->getClientOriginalExtension();
-
-            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-
-            $request->file('image')->storeAs('image', $fileNameToStore);
-
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-
-        return $fileNameToStore;
-    }
 
     public function partByCar($carId)
     {

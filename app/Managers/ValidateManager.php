@@ -21,4 +21,12 @@ class ValidateManager
         ]);
     }
 
+    public function validatePartRequest()
+    {
+        return request()->validate([
+            'title' => ['required', 'min:5', 'max:255']
+        ]);
+
+    }
+
 }
