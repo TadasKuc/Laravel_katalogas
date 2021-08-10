@@ -17,7 +17,7 @@ class User extends Authenticatable
     public const ROLE_ADMIN = "Admin";
     public const ROLE_SIMPLE = "Simple";
     public const ROLE_COMPANY = "Company";
-    public const ROLE_NEW = "New";
+//    public const ROLE_NEW = "New";
 
     public const CONFIRMED_YES = "Patvirtintas";
     public const CONFIRMED_NO = "Nepatvirtintas";
@@ -27,7 +27,7 @@ class User extends Authenticatable
         self::ROLE_ADMIN,
         self::ROLE_SIMPLE,
         self::ROLE_COMPANY,
-        self::ROLE_NEW
+//        self::ROLE_NEW
     ];
 
     public const CONFIRMED = [

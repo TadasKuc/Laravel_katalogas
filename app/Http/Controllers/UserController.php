@@ -80,14 +80,13 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 
-
-
       $user->name         = $request->get('name');
       $user->email         = $request->get('email');
       $user->role         = $request->get('role');
       $user->approved         = $request->get('approved');
-        $user->save();
-        return redirect(route('users.index'));
+      $user->save();
+      return redirect(route('users.index'));
+
     }
 
     /**

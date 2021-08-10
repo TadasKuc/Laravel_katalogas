@@ -27,8 +27,12 @@ class PartController extends Controller
      */
     public function index()
     {
-
-       return view('part.part-index' , ['parts' => Part::all()]);
+        if(Auth()->user()->isSuperAdmin()) {
+            $parts = Part::all();
+        } else {
+            $parts = Part::query()->where('user_id', '=', Auth::user()->id)->get();
+        }
+       return view('part.part-index' , ['parts' => $parts]);
     }
 
 

@@ -11,9 +11,10 @@
         <div class="container">
             <div class="row">
                 @include('layouts.admin')
+                @if(Auth()->user()->isSuperAdmin())
                 <div class="col-md-10">
                     <div class="col-md-12">
-                        <h2>Nepatvirtinti vartotojai</h2>
+                        <h2>Vartotojai</h2>
                         <table class="table table-light table-striped" style="width: 600px">
                             <thead>
                             <tr>
@@ -30,7 +31,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($pendingUsers as $user)
+                            @foreach($users as $user)
                                 <tr >
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->name}}</td>
@@ -50,6 +51,7 @@
                     </div>
 
                 </div>
+                @endif
             </div>
         </div>
     </div>
