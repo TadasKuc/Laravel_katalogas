@@ -35,7 +35,7 @@ class PartManager
 
     public function destroy($part)
     {
-        $this->repository->desttroy($part);
+        $this->repository->destroy($part);
     }
 
 }

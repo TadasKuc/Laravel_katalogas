@@ -24,8 +24,10 @@
                             <th>Spalva</th>
                             <th>Kuro tipas</th>
                             <th>Pavaru deze</th>
-                            <th>Edit</th>
-                            <th>X</th>
+                            @if(Auth()->user()->isSuperAdmin())
+                                <th>Edit</th>
+                                <th>X</th>
+                            @endif
                         </tr>
 
                         @foreach($carsList as $car)
@@ -38,6 +40,8 @@
                                 <td>{{$car->color}} </td>
                                 <td>{{$car->fuel_type}} </td>
                                 <td>{{$car->gearbox}} </td>
+
+                                @if(Auth()->user()->isSuperAdmin())
                                 <td><a class="btn btn-outline-warning" href="{{ route('cars.edit', $car->id) }}" style="color:blue">Redaguoti</a> </td>
                                 <td>
                                     <form action="{{ route('cars.destroy' , ['car' => $car->id]) }}" method="POST">
@@ -46,6 +50,7 @@
                                         <input class="btn btn-outline-danger" type="Submit" value="Trinti">
                                     </form>
                                 </td>
+                                @endif
                             </tr>
 
                         @endforeach

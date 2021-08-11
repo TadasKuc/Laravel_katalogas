@@ -21,8 +21,11 @@
                             <th scope="col">Pavadinimas</th>
                             <th scope="col">Aprašymas</th>
                             <th scope="col">Kategorijos tipas</th>
+
+                            @if(Auth()->user()->isSuperAdmin())
                             <th></th>
                             <th>X</th>
+                            @endif
 
                         </tr>
                         </thead>
@@ -33,6 +36,8 @@
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->description}}</td>
                                 <td>@if($category->category_id === 0) Pagrindinė kategorija @else Subkategorija @endif</td>
+
+                                @if(Auth()->user()->isSuperAdmin())
                                 <td><a class="btn btn-outline-warning" href="{{ route('categories.edit', $category) }}" style="color:blue">Redaguoti</a> </td>
                                 <td>
                                     <form action="{{ route('categories.destroy', $category) }}" method="POST">
@@ -41,8 +46,9 @@
                                         <input class="btn btn-outline-danger" type="Submit" value="Trinti">
                                     </form>
                                 </td>
-                            </tr>
+                                @endif
 
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

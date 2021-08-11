@@ -23,7 +23,7 @@ class Controller extends BaseController
 
             $parts = Part::query()->whereIn('category_id', $categoriesIds->toArray())->paginate(16);
         } else {
-            $parts      = Part::all();
+            $parts      = Part::latest()->paginate(12);
         }
 
         $categories = Category::query()->where('category_id', '=',0 )->get();
