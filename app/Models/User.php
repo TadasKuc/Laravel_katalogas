@@ -17,18 +17,17 @@ class User extends Authenticatable
     public const ROLE_ADMIN = "Admin";
     public const ROLE_SIMPLE = "Simple";
     public const ROLE_COMPANY = "Company";
-//    public const ROLE_NEW = "New";
 
-    public const CONFIRMED_YES = "Patvirtintas";
-    public const CONFIRMED_NO = "Nepatvirtintas";
 
     public const ROLE = [
         self::ROLE_SUPER_ADMIN,
         self::ROLE_ADMIN,
         self::ROLE_SIMPLE,
         self::ROLE_COMPANY,
-//        self::ROLE_NEW
     ];
+
+    public const CONFIRMED_YES = "Patvirtintas";
+    public const CONFIRMED_NO = "Nepatvirtintas";
 
     public const CONFIRMED = [
         self::CONFIRMED_NO,
@@ -85,9 +84,21 @@ class User extends Authenticatable
 
     }
 
-    public function isCompany()
+    public function isCompanyUser()
     {
         if($this->role === self::ROLE_COMPANY)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function isSimpleUser()
+    {
+        if($this->role === self::ROLE_SIMPLE)
         {
             return true;
         }

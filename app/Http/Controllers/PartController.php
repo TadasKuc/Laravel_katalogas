@@ -27,11 +27,21 @@ class PartController extends Controller
      */
     public function index()
     {
-        if(Auth()->user()->isSuperAdmin()) {
-            $parts = Part::all();
+
+        if (request('category')){
+
+            $categoriesIds = Category::query()->select('id')->where('category_id', '=',request('category'))->get();
+
+            $parts = Part::query()->whereIn('category_id', $categoriesIds->toArray())->paginate(16);
         } else {
-            $parts = Part::query()->where('user_id', '=', Auth::user()->id)->get();
+
+            if(Auth()->user()->isSuperAdmin()) {
+                $parts = Part::all();
+            } else {
+                $parts = Part::query()->where('user_id', '=', Auth::user()->id)->get();
+            }
         }
+
        return view('part.part-index' , ['parts' => $parts]);
     }
 

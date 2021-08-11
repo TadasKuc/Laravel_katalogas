@@ -14,7 +14,9 @@
                         <div class="section-heading">
                             <h2>Dalių sąrašas</h2>
                         </div>
-                        <a href="{{route('part.exportToCsv')}}" class="btn btn-info">Exportuoti dalis į csv failą</a>
+                        @if(Auth()->user()->isCompanyUser())
+                            <a href="{{route('part.exportToCsv')}}" class="btn btn-info">Exportuoti dalis į csv failą</a>
+                        @endif
                     </div>
                     <table class="table m-5" style="width: 80%">
                         <tr>
@@ -25,8 +27,8 @@
                             <th>Kategorija</th>
                             <th>Automobilis</th>
 
-                            <th>Edit</th>
-                            <th>X</th>
+                            <th> </th>
+                            <th> </th>
                         </tr>
 
                         @foreach($parts as $part)

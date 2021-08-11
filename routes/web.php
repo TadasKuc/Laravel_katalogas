@@ -25,30 +25,27 @@ Route::get('/', function () {
     return view('home')->name('main');
 });
 
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
 
 Route::get('/', [Controller::class, 'home']);
 
-Route::resource('/users', UserController::class);
+Route::resource('/users', UserController::class)->middleware(['auth', 'admin']);
 
-Route::resource('/parts', PartController::class);
+Route::resource('/parts', PartController::class)->middleware(['auth']);
 Route::get('/parts-export', [PartController::class, 'exportToCsv'])->name('part.exportToCsv');
 
 
-Route::resource('/cars', CarController::class);
+Route::resource('/cars', CarController::class)->middleware(['auth','admin']);
+Route::get('/cars', [CarController::class, 'index'])->name('cars.index')->middleware(['auth']);
 
-Route::resource('/address', AddressController::class);
+Route::resource('/address', AddressController::class)->middleware(['auth']);
 
-Route::resource('/categories', CategoryController::class);
+Route::resource('/categories', CategoryController::class)->middleware(['auth','admin']);
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index')->middleware(['auth']);
 
-Route::resource('/order', OrderController::class);
-Route::get('/order/{part}/add', [OrderController::class, 'add'])->name('order.add');
+Route::resource('/order', OrderController::class)->middleware(['auth']);
+Route::get('/order/{part}/add', [OrderController::class, 'add'])->middleware(['auth'])->name('order.add');
 
-//Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'admin'])->name('dashboard');
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 

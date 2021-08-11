@@ -11,7 +11,7 @@
                 <div class="col-md-8">
                     <div class="col-md-12">
                         <div class="section-heading">
-                            <h2>Vartotojų sąrašas</h2>
+                            <h2>Automobilių sąrašas</h2>
                         </div>
                     </div>
                     <table class="table" style="width: 80%">

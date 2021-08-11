@@ -4,7 +4,6 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
     <div class="send-message">
         <div class="container">
             <div class="row">
@@ -12,7 +11,7 @@
                 <div class="col-md-8">
                     <div class="col-md-12">
                         <div class="section-heading">
-                            <h2>Vartotojų sąrašas</h2>
+                            <h2>Kategorijų sąrašas</h2>
                         </div>
                     </div>
                     <table class="table table-light table-striped" >

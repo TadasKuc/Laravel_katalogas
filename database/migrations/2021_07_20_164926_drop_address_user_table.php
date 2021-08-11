@@ -13,7 +13,7 @@ class DropAddressUserTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('address_user');
+        Schema::dropIfExists('addres_suser');
     }
 
     /**
