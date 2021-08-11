@@ -40,19 +40,21 @@ class PartRepository
         $part->price         = $request->get('price');
         $part->save();
 
+//      sukurti atskira kontroleri nuotrauku valdymui. viena detale gali tureti daug nuotrauku.
+//      Taip pat sutvarkyti blade failus kad butu imama pagrindine nuotrauka
+
+        $image = Image::query()->where('part_id', '=', $part->id)->first();
+        $image->path = $this->savePhoto($request);
+        $image->save();
+
     }
 
-    public function savePhoto($request) {
+    public function savePhoto($request)
+    {
 
         if($request->hasFile('image')) {
 
-            $fileNameWithExt = $request->file('image')->getClientOriginalName();
-
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-
-            $extension = $request->file('image')->getClientOriginalExtension();
-
-            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $fileNameToStore = $request->get('title').'_'.$request->file('image')->getClientOriginalName();
 
             $request->file('image')->storeAs('image', $fileNameToStore);
 
